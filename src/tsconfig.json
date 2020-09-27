@@ -1,0 +1,17 @@
+{
+	"compilerOptions": {
+        "module": "amd",
+        "outFile": "../docs/app.js",
+		"target": "es2018",
+		"moduleResolution": "node",
+		"strictNullChecks": true,
+		"noImplicitAny": true,
+		"removeComments": true,
+		"preserveConstEnums": false,
+		"keyofStringsOnly": true,
+		"sourceMap": false
+	},
+	"include": [
+		"./index.ts"
+	]
+}
