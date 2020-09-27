@@ -266,9 +266,7 @@ class App {
                     videoMikes.appendChild(SelectSupport.option(mike.label, mike.deviceId));
                 });
             };
-            if (0 < devices.length) {
-                this.onSelectVideo(-1);
-            }
+            this.onSelectVideo(-1);
         }
         getDeviceId(select) {
             return select.selectedOptions[0].value;
