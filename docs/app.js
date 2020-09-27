@@ -148,10 +148,12 @@ class App {
         }
         init() {
             this.device.init();
-            return navigator.mediaDevices.enumerateDevices().then((mediaDevices) => {
-                for (let i = 0; i < mediaDevices.length; ++i) {
-                    this.device.add(mediaDevices[i]);
-                }
+            return navigator.mediaDevices.getUserMedia({ audio: true, video: true }).catch(() => { }).then(() => {
+                return navigator.mediaDevices.enumerateDevices().then((mediaDevices) => {
+                    for (let i = 0; i < mediaDevices.length; ++i) {
+                        this.device.add(mediaDevices[i]);
+                    }
+                });
             });
         }
         initInfo() {

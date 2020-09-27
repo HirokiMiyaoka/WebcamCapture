@@ -196,13 +196,16 @@ interface WebCaptureElement extends HTMLElement
         {
             this.device.init();
 
-            return navigator.mediaDevices.enumerateDevices().then( ( mediaDevices ) =>
+            return navigator.mediaDevices.getUserMedia( { audio: true, video: true } ).catch( () => {} ).then( () =>
             {
-                for (let i = 0; i < mediaDevices.length ; ++i )
+                return navigator.mediaDevices.enumerateDevices().then( ( mediaDevices ) =>
                 {
-                    this.device.add( mediaDevices[ i ] );
-                }
-            } );
+                    for (let i = 0; i < mediaDevices.length ; ++i )
+                    {
+                        this.device.add( mediaDevices[ i ] );
+                    }
+                } );
+            });
         }
 
         private initInfo()
